@@ -1,8 +1,15 @@
 import numpy as np
 
+#Rozmiar programu
+SIZE = 50
+
+#Ilośc kombinacji
+combination_counter = 0
+
+#Funkcja sprawdzająca czy liczba odpowiadająca ułożeniu spełnia odpowiednie warunki
 def IsCorrect(a):
     length = 0
-    for i in range(50):
+    for i in range(SIZE):
         if(a[i]==1):
             length=length+1
         else:
@@ -14,17 +21,18 @@ def IsCorrect(a):
     return True
 
 
-combination_counter = 0
-a = np.zeros(50)
-for j in range(2**50-1):
+a = np.zeros(SIZE)
+for j in range(2**SIZE-1):
     if(IsCorrect(a)):
         combination_counter = combination_counter + 1
-    for i in range(50):
+        print(a)
+    for i in range(SIZE):
         if(a[i]==0):
             a[i]=1
             break
         else:
             a[i]=0
-    print(a)
+
+#Inkremenctacja - pętla nie uwględnia sytuacji całkowitego wypełnienia przez jedynki
 combination_counter = combination_counter + 1
 print(combination_counter)
